@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="picker_text_color">#FFFB5B43</color>
+    <color name="picker_white">#ffffff</color>
+    <color name="picker_gray_divider">#FFE7EAEF</color>
+</resources>
