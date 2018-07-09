@@ -4,12 +4,9 @@
 
 package com.widget.picker;
 
-// Referenced classes of package com.qingchifan.view:
-//            LoopView, LoopListener
-
 final class LoopRunnable implements Runnable {
 
-    final LoopView loopView;
+    private final LoopView loopView;
 
     LoopRunnable(LoopView loopview) {
         super();

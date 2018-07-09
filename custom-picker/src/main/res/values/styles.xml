@@ -11,7 +11,7 @@
     </style>
 
     <style name="Animation.Bottom.Rising" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+        <item name="android:windowEnterAnimation">@anim/enter_bottom</item>
+        <item name="android:windowExitAnimation">@anim/exit_bottom</item>
     </style>
 </resources>

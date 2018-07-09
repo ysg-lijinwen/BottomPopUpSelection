@@ -22,7 +22,7 @@ public class LoopView extends View {
     Handler handler;
     LoopListener loopListener;
     private GestureDetector gestureDetector;
-    private int mSelectItem;
+    //    private int mSelectItem;
     private GestureDetector.SimpleOnGestureListener simpleOnGestureListener;
     Context context;
     Paint paintA;
@@ -196,7 +196,7 @@ public class LoopView extends View {
 
     public final void setArrayList(List<String> arrayList) {
         if (arrayList == null) {
-            this.arrayList = new ArrayList();
+            this.arrayList = new ArrayList<String>();
             this.arrayList.add("----");
         }
         this.arrayList = arrayList;
@@ -349,7 +349,7 @@ public class LoopView extends View {
                     } else if (i2 >= n && h + i2 <= o) {
                         canvas.clipRect(0, 0, v, (int) ((float) h * l));
                         canvas.drawText(as[j1], startX, h, paintB);
-                        mSelectItem = arrayList.indexOf(as[j1]);
+//                        mSelectItem = arrayList.indexOf(as[j1]);
                     } else {
                         canvas.clipRect(0, 0, v, (int) ((float) h * l));
                         canvas.drawText(as[j1], startX, h, paintA);
