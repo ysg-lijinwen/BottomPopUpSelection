@@ -25,26 +25,26 @@ import java.util.List;
  * Description:地区选择
  * Created by Kevin.Li on 2018-01-10.
  */
-public class RegionPickerDialog1 extends Dialog {
-    private RegionPickerDialog1.Params params;
+public class RegionPickerDialog extends Dialog {
+    private RegionPickerDialog.Params params;
     private Context context;
 
-    public RegionPickerDialog1(@NonNull Context context) {
+    public RegionPickerDialog(@NonNull Context context) {
         super(context);
         this.context = context;
     }
 
-    public RegionPickerDialog1(@NonNull Context context, int themeResId) {
+    public RegionPickerDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
         this.context = context;
     }
 
-    protected RegionPickerDialog1(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
+    protected RegionPickerDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
         this.context = context;
     }
 
-    private void setParams(RegionPickerDialog1.Params params) {
+    private void setParams(RegionPickerDialog.Params params) {
         this.params = params;
     }
 
@@ -64,7 +64,7 @@ public class RegionPickerDialog1 extends Dialog {
         private int initSelection1;
         private int initSelection2;
         private int initSelection3;
-        private RegionPickerDialog1.OnRegionSelectedListener callback;
+        private RegionPickerDialog.OnRegionSelectedListener callback;
         private final List<RegionSupportBean> list1 = new ArrayList<>();
         private final List<RegionSupportBean> list2 = new ArrayList<>();
         private final List<RegionSupportBean> list3 = new ArrayList<>();
@@ -74,11 +74,11 @@ public class RegionPickerDialog1 extends Dialog {
         //下标偏移，用于处理列表顶部添加“不限”导致业务数据获取错误的问题。
         private final int offsetIndex = 1;
         private final Context context;
-        private final RegionPickerDialog1.Params params;
+        private final RegionPickerDialog.Params params;
 
         public Builder(Context context) {
             this.context = context;
-            params = new RegionPickerDialog1.Params();
+            params = new RegionPickerDialog.Params();
         }
 
         private List<RegionSupportBean> getCurrDateValue() {
@@ -98,45 +98,45 @@ public class RegionPickerDialog1 extends Dialog {
             return result;
         }
 
-        public RegionPickerDialog1.Builder setData1(List<RegionSupportBean> list1) {
+        public RegionPickerDialog.Builder setData1(List<RegionSupportBean> list1) {
             params.list1.clear();
             params.list1.addAll(list1);
             return this;
         }
 
-        public RegionPickerDialog1.Builder setData2(List<RegionSupportBean> list2) {
+        public RegionPickerDialog.Builder setData2(List<RegionSupportBean> list2) {
             params.list2.clear();
             params.list2.addAll(list2);
             return this;
         }
 
-        public RegionPickerDialog1.Builder setData3(List<RegionSupportBean> list3) {
+        public RegionPickerDialog.Builder setData3(List<RegionSupportBean> list3) {
             params.list3.clear();
             params.list3.addAll(list3);
             return this;
         }
 
-        public RegionPickerDialog1.Builder setTitle(String title) {
+        public RegionPickerDialog.Builder setTitle(String title) {
             params.title = title;
             return this;
         }
 
-        public RegionPickerDialog1.Builder setSelection1(int selection) {
+        public RegionPickerDialog.Builder setSelection1(int selection) {
             params.initSelection1 = selection;
             return this;
         }
 
-        public RegionPickerDialog1.Builder setSelection2(int selection) {
+        public RegionPickerDialog.Builder setSelection2(int selection) {
             params.initSelection2 = selection;
             return this;
         }
 
-        public RegionPickerDialog1.Builder setSelection3(int selection) {
+        public RegionPickerDialog.Builder setSelection3(int selection) {
             params.initSelection3 = selection;
             return this;
         }
 
-        public RegionPickerDialog1.Builder setOnRegionSelectedListener(RegionPickerDialog1.OnRegionSelectedListener onRegionSelectedListener) {
+        public RegionPickerDialog.Builder setOnRegionSelectedListener(RegionPickerDialog.OnRegionSelectedListener onRegionSelectedListener) {
             params.callback = onRegionSelectedListener;
             return this;
         }
@@ -150,8 +150,8 @@ public class RegionPickerDialog1 extends Dialog {
             return strings;
         }
 
-        public RegionPickerDialog1 create() {
-            final RegionPickerDialog1 dialog = new RegionPickerDialog1(context, params.shadow ? R.style.Theme_Light_NoTitle_Dialog : R.style.Theme_Light_NoTitle_NoShadow_Dialog);
+        public RegionPickerDialog create() {
+            final RegionPickerDialog dialog = new RegionPickerDialog(context, params.shadow ? R.style.Theme_Light_NoTitle_Dialog : R.style.Theme_Light_NoTitle_NoShadow_Dialog);
             View view = LayoutInflater.from(context).inflate(R.layout.layout_picker_region, null);
 
             if (!TextUtils.isEmpty(params.title)) {

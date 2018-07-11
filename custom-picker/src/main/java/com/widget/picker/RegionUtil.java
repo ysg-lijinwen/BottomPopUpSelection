@@ -4,8 +4,11 @@ import android.content.Context;
 
 import com.widget.picker.bean.RegionSupportBean;
 import com.widget.picker.earth.City;
-import com.widget.picker.earth.Country1;
+import com.widget.picker.earth.Country;
+import com.widget.picker.earth.Earth;
+import com.widget.picker.earth.EarthData;
 import com.widget.picker.earth.Province;
+import com.widget.picker.util.GsonUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,6 +16,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +26,7 @@ import java.util.List;
  * Created by Kevin.Li on 2018-01-10.
  */
 public class RegionUtil {
-    private static List<Country1> country1List = new ArrayList<>();
+    private static List<Country> country1List = new ArrayList<>();
 
     public static List<RegionSupportBean> getList1Data(Context context) {
         intEarthData(context);
@@ -88,6 +92,7 @@ public class RegionUtil {
 
     /**
      * 初始化数据
+     * 最原始的解析方式
      */
     private static void intEarthData(Context context) {
         if (country1List.size() == 0) {
@@ -102,9 +107,9 @@ public class RegionUtil {
                 JSONObject jb = new JSONObject(sb.toString());
                 JSONObject earth = jb.getJSONObject("Earth");
                 JSONArray countryArray = earth.getJSONArray("Country");
-                Country1 country1;
+                Country country1;
                 for (int i = 0; i < countryArray.length(); i++) {
-                    country1 = new Country1();
+                    country1 = new Country();
                     JSONObject country = countryArray.getJSONObject(i);
                     country1.setCountryID(country.getString("CountryID"));
                     country1.setCountryName(country.getString("CountryName"));
@@ -149,6 +154,25 @@ public class RegionUtil {
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 初始化数据
+     * 可直接使用Json工具解析
+     */
+    private static void intEarthData1(Context context) {
+        if (country1List.size() == 0) {
+            InputStream is;
+            try {
+                is = context.getResources().getAssets().open("earth.json");
+                byte[] bytes = new byte[is.available()];
+                is.read(bytes);
+                EarthData ed = GsonUtils.getInstance().changeGsonToBean(new String(bytes), EarthData.class);
+                country1List.addAll(ed.getEarth().getCountry());
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

@@ -17,6 +17,9 @@ import java.util.List;
 public class TimePickerDialog extends Dialog {
 
     public interface OnTimeSelectedListener {
+        /**
+         * @param times 数组长度为2，如12:30为[12.30]
+         */
         void onTimeSelected(int[] times);
 
         void cancel();
@@ -55,7 +58,7 @@ public class TimePickerDialog extends Dialog {
          *
          * @return int[]数组形式返回。例[12,30]
          */
-        private final int[] getCurrDateValues() {
+        private int[] getCurrDateValues() {
             int currHour = Integer.parseInt(params.loopHour.getCurrentItemValue());
             int currMin = Integer.parseInt(params.loopMin.getCurrentItemValue());
             return new int[]{currHour, currMin};

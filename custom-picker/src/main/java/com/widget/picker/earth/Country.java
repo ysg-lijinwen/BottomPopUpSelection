@@ -6,7 +6,7 @@ import java.util.List;
  * Description:国家
  * Created by Kevin.Li on 2018-03-05.
  */
-public class Country1 {
+public class Country {
     private String CountryID;
     private String CountryName;
     private List<Province> Station;

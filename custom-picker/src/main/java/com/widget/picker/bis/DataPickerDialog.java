@@ -41,6 +41,7 @@ public class DataPickerDialog extends Dialog {
 
     public interface OnDataSelectedListener {
         void onDataSelected(String itemValue, int position);
+
         void onCancel();
     }
 
@@ -123,7 +124,7 @@ public class DataPickerDialog extends Dialog {
                 @Override
                 public void onClick(View v) {
                     dialog.dismiss();
-                    params.callback.onDataSelected(getCurrDateValue(),loopData.getCurrentItem());
+                    params.callback.onDataSelected(getCurrDateValue(), loopData.getCurrentItem());
                 }
             });
 
